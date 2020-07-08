@@ -1,0 +1,92 @@
+<html lang="tr">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Cihan TAYLAN HTML Edit</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="codemiror/codemiror.css">
+	<style>
+		body{
+			background: #292929;
+		}
+		.CodeMirror {
+			height: 100% !important;
+		}
+		.texts {
+			z-index: 1000;
+			color: #000;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row h-100">
+			<div class="col-md-6">
+				<div class="bg-light m-1">
+					<textarea name="code" id="code">
+<!DOCTYPE html>
+<html lang="tr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+	</head>
+	<body>
+		
+	</body>
+</html>
+					</textarea>
+					<div class="position-absolute" style="z-index: 1000;top: 5px;right: 25px;font-weight: bold;">HTML Code</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="bg-light m-1 h-100">
+					<div id="result">
+						<!DOCTYPE html>
+						<html lang="tr">
+							<head>
+								<meta charset="UTF-8">
+								<meta name="viewport" content="width=device-width, initial-scale=1.0">
+								<meta http-equiv="X-UA-Compatible" content="ie=edge">
+								<title>Document</title>
+							</head>
+							<body>
+								
+							</body>
+						</html>
+					</div>
+					<div class="position-absolute" style="z-index: 1000;top: 5px;right: 25px;font-weight: bold;">HTML Result</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="jquery/jquery.min.js"></script>
+	<script src="codemiror/codemiror.js"></script>
+	<script src="codemiror/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="codemiror/addon/selection/selection-pointer.js"></script>
+	<script src="codemiror/mode/xml/xml.js"></script>
+	<script src="codemiror/mode/javascript/javascript.js"></script>
+	<script src="codemiror/mode/css/css.js"></script>
+	<script src="codemiror/mode/vbscript/vbscript.js"></script>
+	<script>
+		var mixedMode = {
+				name: "htmlmixed",
+				scriptTypes: [{matches: /\/x-handlebars-template|\/x-mustache/i,
+							mode: null},
+							{matches: /(text|application)\/(x-)?vb(a|script)/i,
+							mode: "vbscript"}]
+			};
+			var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+				mode: mixedMode,
+				selectionPointer: true,
+				lineNumbers: true,
+			});
+			editor.on("change", function(){
+				$('#result').html(editor.getValue());
+			});
+	</script>
+</body>
+</html>
